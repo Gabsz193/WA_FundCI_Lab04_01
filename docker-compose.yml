@@ -2,7 +2,7 @@ version: '3'
 
 services:
   app:
-    image: gabsz193/webacademy:latest
+    image: ${DOCKERHUB_USERNAME}/webacademy:latest
     container_name: webacademydemo
     restart: always
     ports:

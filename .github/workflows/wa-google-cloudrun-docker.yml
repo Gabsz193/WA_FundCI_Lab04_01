@@ -31,11 +31,13 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
         with:
           context: ./
           push: true
           dockerfile: ./Dockerfile   # Specify the path to your Dockerfile here
-          tags: moisesgc/webacademy:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/webacademy:latest
   deploy:
     needs: lint
     name: Setup Gcloud Account
